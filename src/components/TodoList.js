@@ -16,8 +16,8 @@ function TodoList() {
   return (
     <>
       <h1>What's the Plan for Today?</h1>
-      <TodoForm />
-      <Todo />
+      <TodoForm addTodo = { addTodo } />
+      <Todo todos={ todos }/>
     </>
   );
 }
