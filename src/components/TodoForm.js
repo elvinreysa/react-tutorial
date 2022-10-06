@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import Todo from "./Todo";
+import TodoList from "./TodoList";
 
 //get the inputted data from the input tag by using the button onClick handleSubmit
 // use the handleChange as setter to get the value in input tag and set it in the input state
@@ -7,18 +9,28 @@ import React, { useState } from "react";
 function TodoForm(props) {
   const [input, setInput] = React.useState("");
 
-  const handleChange = (e) => {};
 
-  const handleSubmit = (e) => {};
+  const handleChange = (e) => {
+    let input = e.target.value;
+    setInput(e.target.value)
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.addTodo (input);
+    setInput ("");
+  };
 
   return (
+    
     <form onSubmit={handleSubmit} className="todo-form">
       <input
+        type = "text"
         placeholder="Add a todo"
-        value={input}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e)}
         name="text"
         className="todo-input"
+        value = {input}
       />
       <button onClick={handleSubmit} className="todo-button">
         Add todo
